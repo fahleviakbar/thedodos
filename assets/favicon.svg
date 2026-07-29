@@ -1,0 +1,15 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="120" fill="#080D18"></rect>
+
+  <!-- Hexagon -->
+  <path d="M256 55L425 153V359L256 457L87 359V153L256 55Z" stroke="#60A5FA" stroke-width="32" fill="none"></path>
+
+  <!-- D -->
+  <path d="M175 145H260C340 145 375 190 375 256C375 322 340 367 260 367H175V145Z" fill="#F8FAFC"></path>
+
+  <!-- D inner cut -->
+  <path d="M225 195V317H258C300 317 325 295 325 256C325 217 300 195 258 195H225Z" fill="#080D18"></path>
+
+</svg>

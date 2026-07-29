@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Dodo's Homelab | Self Hosted Infrastructure</title>
+
+    <meta
+      name="description"
+      content="Personal homelab running Debian Linux, Docker containers, networking, monitoring, and self-hosted services."
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon.png"
+    />
+    <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+
+    <link rel="stylesheet" href="aos.css" />
+    <link rel="stylesheet" href="homelab.css" />
+
+    <meta property="og:title" content="Dodo's Homelab" />
+    <meta
+      property="og:description"
+      content="Personal self-hosted infrastructure running Debian, Docker, networking, and automation."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/homelab-preview.webp" />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <a href="#" class="logo">
+        <span class="logo-icon">⬢</span>
+
+        <div>
+          <strong>Dodo's Homelab</strong>
+
+          <small>Infrastructure Lab</small>
+        </div>
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle Menu">
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+      </button>
+      <div class="nav-links">
+        <a href="#about">About</a>
+
+        <a href="#status">Status</a>
+
+        <a href="#architecture">Architecture</a>
+
+        <a href="#services">Services</a>
+
+        <a href="#hardware">Hardware</a>
+        <a href="#stack">Stack</a>
+        <a href="#gallery">Gallery</a>
+      </div>
+    </nav>
+    <div class="menu-overlay"></div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="badge"> SELF-HOSTED INFRASTRUCTURE </span>
+
+        <h1>Dodo's Homelab</h1>
+
+        <h2>Building infrastructure, one experiment at a time.</h2>
+
+        <p>
+          A personal environment where I build, test, and maintain Linux
+          servers, Docker containers, networking, monitoring, automation, and
+          self-hosted services through real-world experimentation.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#status"> Live Status </a>
+
+          <a href="/"> Back Home </a>
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <div class="terminal">
+          <div class="terminal-header">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="terminal-body">
+            <p><span>$</span> hostname</p>
+            <p>dodos-homelab</p>
+
+            <br />
+
+            <p><span>$</span> docker ps</p>
+
+            <p>🟢 nginx-proxy-manager</p>
+            <p>🟢 uptime-kuma</p>
+            <p>🟢 homepage</p>
+            <p>🟢 nextcloud</p>
+            <p>🟢 tailscale</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-title">
+        <span>01</span>
+
+        <h2>About This Lab</h2>
+      </div>
+
+      <p>
+        This homelab is my personal environment for learning infrastructure,
+        system administration, and self-hosted technology. Built using my own
+        hardware, this lab is used to experiment with Linux, Docker, networking,
+        deployment, and managing services in a real environment.
+      </p>
+    </section>
+
+    <!-- STATUS -->
+    <section id="status">
+      <div class="section-title">
+        <span>02</span>
+
+        <h2>Live Status</h2>
+      </div>
+
+      <p class="description">
+        Public services are continuously monitored using Uptime Kuma to ensure
+        availability and quick issue detection.
+      </p>
+
+      <div class="status-card">
+        <iframe src="https://status.thedodos.my.id/status/homelab"> </iframe>
+      </div>
+
+      <div class="status-footer">
+        <div class="status-online">
+          <span class="dot"></span>
+
+          Services are monitored 24/7
+        </div>
+
+        <a href="https://status.thedodos.my.id/status/homelab" target="_blank">
+          Open Full Status →
+        </a>
+      </div>
+    </section>
+
+    <section id="architecture">
+      <div class="section-title">
+        <span>03</span>
+
+        <h2>Architecture</h2>
+      </div>
+
+      <p class="description">
+        Overview of my homelab infrastructure, from public access to self-hosted
+        services.
+      </p>
+
+      <div class="architecture-tree">
+        <div class="arch-node">🌐 Internet</div>
+
+        <div class="arch-line"></div>
+
+        <div class="arch-node">
+          ☁ Cloudflare Tunnel
+
+          <small> Secure public access </small>
+        </div>
+
+        <div class="arch-line"></div>
+
+        <div class="arch-node">
+          📡 Mikrotik Router
+
+          <small> Network routing </small>
+        </div>
+
+        <div class="arch-line"></div>
+
+        <div class="arch-node server-node">
+          <h3>🖥 Debian Homelab Server</h3>
+
+          <p>
+            Intel Core i3-8100<br />
+            16GB DDR4<br />
+            Debian Linux
+          </p>
+        </div>
+
+        <div class="arch-line"></div>
+
+        <div class="arch-node docker-node">🐳 Docker Engine</div>
+
+        <div class="service-branch">
+          <div class="service-card" data-aos="fade-up">
+            🌍 Nginx Proxy Manager
+          </div>
+
+          <div class="service-card" data-aos="fade-up">📊 Uptime Kuma</div>
+
+          <div class="service-card" data-aos="fade-up">🏠 Homepage</div>
+
+          <div class="service-card" data-aos="fade-up">☁ Nextcloud</div>
+
+          <div class="service-card" data-aos="fade-up">🔐 Tailscale</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="section-title">
+        <span>04</span>
+
+        <h2>Services</h2>
+      </div>
+
+      <p class="description">
+        Self-hosted applications running inside Docker containers to provide
+        monitoring, management, storage, and remote access.
+      </p>
+
+      <div class="services-grid">
+        <article class="service-box">
+          <div class="service-icon">🐳</div>
+
+          <h3>Docker Engine</h3>
+
+          <p>
+            Container platform used to deploy and manage self-hosted
+            applications.
+          </p>
+        </article>
+
+        <article class="service-box">
+          <div class="service-icon">🌍</div>
+
+          <h3>Nginx Proxy Manager</h3>
+
+          <p>
+            Reverse proxy solution for routing services and managing SSL
+            certificates.
+          </p>
+        </article>
+
+        <article class="service-box">
+          <div class="service-icon">📊</div>
+
+          <h3>Uptime Kuma</h3>
+
+          <p>
+            Monitoring system used to track service availability and uptime
+            status.
+          </p>
+        </article>
+
+        <article class="service-box">
+          <div class="service-icon">🏠</div>
+
+          <h3>Homepage</h3>
+
+          <p>Personal dashboard to organize and access homelab services.</p>
+        </article>
+
+        <article class="service-box">
+          <div class="service-icon">☁</div>
+
+          <h3>Nextcloud</h3>
+
+          <p>
+            Self-hosted cloud platform for file management and personal storage.
+          </p>
+        </article>
+
+        <article class="service-box">
+          <div class="service-icon">🔐</div>
+
+          <h3>Tailscale</h3>
+
+          <p>
+            Secure remote network access using WireGuard-based VPN technology.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Hardware -->
+    <section id="hardware">
+      <div class="section-title">
+        <span>05</span>
+
+        <h2>Hardware</h2>
+      </div>
+
+      <p class="description">
+        The physical foundation behind my homelab environment, built for
+        learning, testing, and running self-hosted services.
+      </p>
+
+      <div class="hardware-grid">
+        <div class="hardware-card" data-aos="fade-up">
+          <div class="hardware-icon">🖥️</div>
+
+          <h3>Homelab Server</h3>
+
+          <ul>
+            <li>Intel Core i3-8100</li>
+
+            <li>16GB DDR4 RAM</li>
+
+            <li>128GB NVMe SSD</li>
+
+            <li>1TB HDD Storage</li>
+
+            <li>Debian Linux</li>
+          </ul>
+        </div>
+
+        <div class="hardware-card" data-aos="fade-up">
+          <div class="hardware-icon">🌐</div>
+
+          <h3>Network Infrastructure</h3>
+
+          <ul>
+            <li>Mikrotik Router</li>
+
+            <li>TCP/IP Networking</li>
+
+            <li>Cloudflare Tunnel</li>
+
+            <li>Tailscale VPN</li>
+          </ul>
+        </div>
+
+        <div class="hardware-card" data-aos="fade-up">
+          <div class="hardware-icon">🐳</div>
+
+          <h3>Runtime Environment</h3>
+
+          <ul>
+            <li>Debian Server</li>
+
+            <li>Docker Engine</li>
+
+            <li>Containerized Services</li>
+
+            <li>Self-hosted Applications</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stack -->
+    <section id="stack">
+      <div class="section-title">
+        <span>06</span>
+
+        <h2>Tech Stack</h2>
+      </div>
+
+      <p class="description">
+        Technologies and tools used to build, maintain, and improve my homelab
+        environment.
+      </p>
+
+      <div class="stack-container">
+        <div class="stack-group" data-aos="fade-up">
+          <h3>Infrastructure</h3>
+
+          <div class="stack-list">
+            <span>Linux</span>
+
+            <span>Debian</span>
+
+            <span>Docker</span>
+
+            <span>Portainer</span>
+
+            <span>Self-hosting</span>
+          </div>
+        </div>
+
+        <div class="stack-group" data-aos="fade-up">
+          <h3>Networking</h3>
+
+          <div class="stack-list">
+            <span>Mikrotik</span>
+
+            <span>TCP/IP</span>
+
+            <span>Routing</span>
+
+            <span>VPN</span>
+
+            <span>Cloudflare Tunnel</span>
+
+            <span>Tailscale</span>
+          </div>
+        </div>
+
+        <div class="stack-group" data-aos="fade-up">
+          <h3>Web & Development</h3>
+
+          <div class="stack-list">
+            <span>HTML</span>
+
+            <span>CSS</span>
+
+            <span>JavaScript</span>
+
+            <span>Git</span>
+
+            <span>GitHub</span>
+          </div>
+        </div>
+
+        <div class="stack-group" data-aos="fade-up">
+          <h3>Monitoring & Tools</h3>
+
+          <div class="stack-list">
+            <span>Uptime Kuma</span>
+
+            <span>VS Code</span>
+
+            <span>Cloudflare</span>
+
+            <span>SSH</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <div class="section-title">
+        <span>07</span>
+
+        <h2>Technical Gallery</h2>
+      </div>
+
+      <p class="description">
+        A visual collection of my experiments, configurations, and
+        infrastructure activities.
+      </p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="assets/server.webp" alt="Homelab Server Setup" />
+
+          <div class="gallery-overlay">
+            <h3>Homelab Server</h3>
+
+            <p>Debian • Docker • Self-hosting</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/network.webp" alt="Network Configuration" />
+
+          <div class="gallery-overlay">
+            <h3>Network Setup</h3>
+
+            <p>Mikrotik • Routing</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/portainer.webp" alt="Docker Environment" />
+
+          <div class="gallery-overlay">
+            <h3>Docker Environment</h3>
+
+            <p>Container Management</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="assets/linuxterminal.webp" alt="Linux Terminal" />
+
+          <div class="gallery-overlay">
+            <h3>Linux Administration</h3>
+
+            <p>Debian • SSH • CLI</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>© 2026 Fahlevi Akbar</p>
+
+      <small>
+        Built with curiosity, Linux, Docker, and continuous experiments.
+      </small>
+    </footer>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true,
+      });
+    </script>
+
+    <script>
+      const menuToggle = document.querySelector(".menu-toggle");
+
+      const navLinks = document.querySelector(".nav-links");
+
+      const overlay = document.querySelector(".menu-overlay");
+
+      const links = document.querySelectorAll(".nav-links a");
+
+      function openMenu() {
+        navLinks.classList.add("active");
+
+        overlay.classList.add("active");
+
+        menuToggle.classList.add("active");
+      }
+
+      function closeMenu() {
+        navLinks.classList.remove("active");
+
+        overlay.classList.remove("active");
+
+        menuToggle.classList.remove("active");
+      }
+
+      menuToggle.addEventListener("click", () => {
+        if (navLinks.classList.contains("active")) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      // klik luar menu
+
+      overlay.addEventListener("click", () => {
+        closeMenu();
+      });
+
+      // klik menu item
+
+      links.forEach((link) => {
+        link.addEventListener("click", () => {
+          closeMenu();
+        });
+      });
+
+      // scroll otomatis tutup
+
+      window.addEventListener("scroll", () => {
+        closeMenu();
+      });
+
+      // tombol ESC
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeMenu();
+        }
+      });
+    </script>
+  </body>
+</html>
