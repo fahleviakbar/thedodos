@@ -1,596 +1,1160 @@
 <!doctype html>
-<html lang="en">
+<html lang="id" class="scroll-smooth dark">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Dodo's Homelab | Self Hosted Infrastructure</title>
-
+    <title>thedodos.my.id // Homelab Infrastructure</title>
     <meta
       name="description"
-      content="Personal homelab running Debian Linux, Docker containers, networking, monitoring, and self-hosted services."
+      content="Homelab & Infrastruktur thedodos.my.id — Lenovo ThinkCentre M720q Tiny, Live Telemetry, Docker & Cloudflare Tunnel."
     />
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="icon"
-      type="image/png"
-      href="/favicon/favicon-96x96.png"
-      sizes="96x96"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
     />
-    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon/favicon.ico" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/favicon/apple-touch-icon.png"
-    />
-    <meta name="apple-mobile-web-app-title" content="MyWebSite" />
-    <link rel="manifest" href="/favicon/site.webmanifest" />
 
-    <link rel="stylesheet" href="aos.css" />
-    <link rel="stylesheet" href="homelab.css" />
-
-    <meta property="og:title" content="Dodo's Homelab" />
-    <meta
-      property="og:description"
-      content="Personal self-hosted infrastructure running Debian, Docker, networking, and automation."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="assets/homelab-preview.webp" />
-  </head>
-
-  <body>
-    <!-- NAVBAR -->
-    <nav class="navbar">
-      <a href="#" class="logo">
-        <span class="logo-icon">⬢</span>
-
-        <div>
-          <strong>Dodo's Homelab</strong>
-
-          <small>Infrastructure Lab</small>
-        </div>
-      </a>
-
-      <button class="menu-toggle" aria-label="Toggle Menu">
-        <span></span>
-
-        <span></span>
-
-        <span></span>
-      </button>
-      <div class="nav-links">
-        <a href="#about">About</a>
-
-        <a href="#status">Status</a>
-
-        <a href="#architecture">Architecture</a>
-
-        <a href="#services">Services</a>
-
-        <a href="#hardware">Hardware</a>
-        <a href="#stack">Stack</a>
-        <a href="#gallery">Gallery</a>
-      </div>
-    </nav>
-    <div class="menu-overlay"></div>
-
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-content">
-        <span class="badge"> SELF-HOSTED INFRASTRUCTURE </span>
-
-        <h1>Dodo's Homelab</h1>
-
-        <h2>Building infrastructure, one experiment at a time.</h2>
-
-        <p>
-          A personal environment where I build, test, and maintain Linux
-          servers, Docker containers, networking, monitoring, automation, and
-          self-hosted services through real-world experimentation.
-        </p>
-
-        <div class="hero-buttons">
-          <a href="#status"> Live Status </a>
-
-          <a href="/"> Back Home </a>
-        </div>
-      </div>
-
-      <div class="hero-panel">
-        <div class="terminal">
-          <div class="terminal-header">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-
-          <div class="terminal-body">
-            <p><span>$</span> hostname</p>
-            <p>dodos-homelab</p>
-
-            <br />
-
-            <p><span>$</span> docker ps</p>
-
-            <p>🟢 nginx-proxy-manager</p>
-            <p>🟢 uptime-kuma</p>
-            <p>🟢 homepage</p>
-            <p>🟢 nextcloud</p>
-            <p>🟢 tailscale</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="section-title">
-        <span>01</span>
-
-        <h2>About This Lab</h2>
-      </div>
-
-      <p>
-        This homelab is my personal environment for learning infrastructure,
-        system administration, and self-hosted technology. Built using my own
-        hardware, this lab is used to experiment with Linux, Docker, networking,
-        deployment, and managing services in a real environment.
-      </p>
-    </section>
-
-    <!-- STATUS -->
-    <section id="status">
-      <div class="section-title">
-        <span>02</span>
-
-        <h2>Live Status</h2>
-      </div>
-
-      <p class="description">
-        Public services are continuously monitored using Uptime Kuma to ensure
-        availability and quick issue detection.
-      </p>
-
-      <div class="status-card">
-        <iframe src="https://status.thedodos.my.id/status/homelab"> </iframe>
-      </div>
-
-      <div class="status-footer">
-        <div class="status-online">
-          <span class="dot"></span>
-
-          Services are monitored 24/7
-        </div>
-
-        <a href="https://status.thedodos.my.id/status/homelab" target="_blank">
-          Open Full Status →
-        </a>
-      </div>
-    </section>
-
-    <section id="architecture">
-      <div class="section-title">
-        <span>03</span>
-
-        <h2>Architecture</h2>
-      </div>
-
-      <p class="description">
-        Overview of my homelab infrastructure, from public access to self-hosted
-        services.
-      </p>
-
-      <div class="architecture-tree">
-        <div class="arch-node">🌐 Internet</div>
-
-        <div class="arch-line"></div>
-
-        <div class="arch-node">
-          ☁ Cloudflare Tunnel
-
-          <small> Secure public access </small>
-        </div>
-
-        <div class="arch-line"></div>
-
-        <div class="arch-node">
-          📡 Mikrotik Router
-
-          <small> Network routing </small>
-        </div>
-
-        <div class="arch-line"></div>
-
-        <div class="arch-node server-node">
-          <h3>🖥 Debian Homelab Server</h3>
-
-          <p>
-            Intel Core i3-8100<br />
-            16GB DDR4<br />
-            Debian Linux
-          </p>
-        </div>
-
-        <div class="arch-line"></div>
-
-        <div class="arch-node docker-node">🐳 Docker Engine</div>
-
-        <div class="service-branch">
-          <div class="service-card" data-aos="fade-up">
-            🌍 Nginx Proxy Manager
-          </div>
-
-          <div class="service-card" data-aos="fade-up">📊 Uptime Kuma</div>
-
-          <div class="service-card" data-aos="fade-up">🏠 Homepage</div>
-
-          <div class="service-card" data-aos="fade-up">☁ Nextcloud</div>
-
-          <div class="service-card" data-aos="fade-up">🔐 Tailscale</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services">
-      <div class="section-title">
-        <span>04</span>
-
-        <h2>Services</h2>
-      </div>
-
-      <p class="description">
-        Self-hosted applications running inside Docker containers to provide
-        monitoring, management, storage, and remote access.
-      </p>
-
-      <div class="services-grid">
-        <article class="service-box">
-          <div class="service-icon">🐳</div>
-
-          <h3>Docker Engine</h3>
-
-          <p>
-            Container platform used to deploy and manage self-hosted
-            applications.
-          </p>
-        </article>
-
-        <article class="service-box">
-          <div class="service-icon">🌍</div>
-
-          <h3>Nginx Proxy Manager</h3>
-
-          <p>
-            Reverse proxy solution for routing services and managing SSL
-            certificates.
-          </p>
-        </article>
-
-        <article class="service-box">
-          <div class="service-icon">📊</div>
-
-          <h3>Uptime Kuma</h3>
-
-          <p>
-            Monitoring system used to track service availability and uptime
-            status.
-          </p>
-        </article>
-
-        <article class="service-box">
-          <div class="service-icon">🏠</div>
-
-          <h3>Homepage</h3>
-
-          <p>Personal dashboard to organize and access homelab services.</p>
-        </article>
-
-        <article class="service-box">
-          <div class="service-icon">☁</div>
-
-          <h3>Nextcloud</h3>
-
-          <p>
-            Self-hosted cloud platform for file management and personal storage.
-          </p>
-        </article>
-
-        <article class="service-box">
-          <div class="service-icon">🔐</div>
-
-          <h3>Tailscale</h3>
-
-          <p>
-            Secure remote network access using WireGuard-based VPN technology.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Hardware -->
-    <section id="hardware">
-      <div class="section-title">
-        <span>05</span>
-
-        <h2>Hardware</h2>
-      </div>
-
-      <p class="description">
-        The physical foundation behind my homelab environment, built for
-        learning, testing, and running self-hosted services.
-      </p>
-
-      <div class="hardware-grid">
-        <div class="hardware-card" data-aos="fade-up">
-          <div class="hardware-icon">🖥️</div>
-
-          <h3>Homelab Server</h3>
-
-          <ul>
-            <li>Intel Core i3-8100</li>
-
-            <li>16GB DDR4 RAM</li>
-
-            <li>128GB NVMe SSD</li>
-
-            <li>1TB HDD Storage</li>
-
-            <li>Debian Linux</li>
-          </ul>
-        </div>
-
-        <div class="hardware-card" data-aos="fade-up">
-          <div class="hardware-icon">🌐</div>
-
-          <h3>Network Infrastructure</h3>
-
-          <ul>
-            <li>Mikrotik Router</li>
-
-            <li>TCP/IP Networking</li>
-
-            <li>Cloudflare Tunnel</li>
-
-            <li>Tailscale VPN</li>
-          </ul>
-        </div>
-
-        <div class="hardware-card" data-aos="fade-up">
-          <div class="hardware-icon">🐳</div>
-
-          <h3>Runtime Environment</h3>
-
-          <ul>
-            <li>Debian Server</li>
-
-            <li>Docker Engine</li>
-
-            <li>Containerized Services</li>
-
-            <li>Self-hosted Applications</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Stack -->
-    <section id="stack">
-      <div class="section-title">
-        <span>06</span>
-
-        <h2>Tech Stack</h2>
-      </div>
-
-      <p class="description">
-        Technologies and tools used to build, maintain, and improve my homelab
-        environment.
-      </p>
-
-      <div class="stack-container">
-        <div class="stack-group" data-aos="fade-up">
-          <h3>Infrastructure</h3>
-
-          <div class="stack-list">
-            <span>Linux</span>
-
-            <span>Debian</span>
-
-            <span>Docker</span>
-
-            <span>Portainer</span>
-
-            <span>Self-hosting</span>
-          </div>
-        </div>
-
-        <div class="stack-group" data-aos="fade-up">
-          <h3>Networking</h3>
-
-          <div class="stack-list">
-            <span>Mikrotik</span>
-
-            <span>TCP/IP</span>
-
-            <span>Routing</span>
-
-            <span>VPN</span>
-
-            <span>Cloudflare Tunnel</span>
-
-            <span>Tailscale</span>
-          </div>
-        </div>
-
-        <div class="stack-group" data-aos="fade-up">
-          <h3>Web & Development</h3>
-
-          <div class="stack-list">
-            <span>HTML</span>
-
-            <span>CSS</span>
-
-            <span>JavaScript</span>
-
-            <span>Git</span>
-
-            <span>GitHub</span>
-          </div>
-        </div>
-
-        <div class="stack-group" data-aos="fade-up">
-          <h3>Monitoring & Tools</h3>
-
-          <div class="stack-list">
-            <span>Uptime Kuma</span>
-
-            <span>VS Code</span>
-
-            <span>Cloudflare</span>
-
-            <span>SSH</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section id="gallery">
-      <div class="section-title">
-        <span>07</span>
-
-        <h2>Technical Gallery</h2>
-      </div>
-
-      <p class="description">
-        A visual collection of my experiments, configurations, and
-        infrastructure activities.
-      </p>
-
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="assets/server.webp" alt="Homelab Server Setup" />
-
-          <div class="gallery-overlay">
-            <h3>Homelab Server</h3>
-
-            <p>Debian • Docker • Self-hosting</p>
-          </div>
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/network.webp" alt="Network Configuration" />
-
-          <div class="gallery-overlay">
-            <h3>Network Setup</h3>
-
-            <p>Mikrotik • Routing</p>
-          </div>
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/portainer.webp" alt="Docker Environment" />
-
-          <div class="gallery-overlay">
-            <h3>Docker Environment</h3>
-
-            <p>Container Management</p>
-          </div>
-        </div>
-
-        <div class="gallery-item">
-          <img src="assets/linuxterminal.webp" alt="Linux Terminal" />
-
-          <div class="gallery-overlay">
-            <h3>Linux Administration</h3>
-
-            <p>Debian • SSH • CLI</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-      <p>© 2026 Fahlevi Akbar</p>
-
-      <small>
-        Built with curiosity, Linux, Docker, and continuous experiments.
-      </small>
-    </footer>
-
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      AOS.init({
-        duration: 800,
-        once: true,
-      });
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+          },
+        },
+      };
     </script>
 
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+      body {
+        background-color: #020617;
+        color: #f1f5f9;
+        overflow-x: hidden;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #020617;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1e293b;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #06b6d4;
+      }
+
+      /* Typewriter cursor */
+      .cursor-blink {
+        display: inline-block;
+        width: 10px;
+        height: 1.1em;
+        background-color: #10b981;
+        vertical-align: text-bottom;
+        animation: blink 1s step-end infinite;
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+
+      /* Animated network flow connectors */
+      .flow-line-h {
+        position: relative;
+        height: 2px;
+        background: rgba(51, 65, 85, 0.7);
+        overflow: hidden;
+      }
+      .flow-line-h::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -40%;
+        width: 40%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          #06b6d4,
+          #10b981,
+          transparent
+        );
+        animation: flowX 1.8s linear infinite;
+      }
+      @keyframes flowX {
+        0% {
+          left: -40%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      .flow-line-v {
+        position: relative;
+        width: 2px;
+        background: rgba(51, 65, 85, 0.7);
+        overflow: hidden;
+      }
+      .flow-line-v::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: -40%;
+        width: 100%;
+        height: 40%;
+        background: linear-gradient(
+          180deg,
+          transparent,
+          #06b6d4,
+          #10b981,
+          transparent
+        );
+        animation: flowY 1.8s linear infinite;
+      }
+      @keyframes flowY {
+        0% {
+          top: -40%;
+        }
+        100% {
+          top: 100%;
+        }
+      }
+
+      /* Subtle glass card highlight */
+      .glass-card {
+        background: rgba(15, 23, 42, 0.76);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(51, 65, 85, 0.65);
+        box-shadow: 0 10px 35px -10px rgba(0, 0, 0, 0.65);
+      }
+      .glass-card:hover {
+        border-color: rgba(6, 182, 212, 0.45);
+      }
+    </style>
+  </head>
+
+  <body class="font-sans antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+    <!-- Full-screen Interactive Grid Canvas -->
+    <canvas
+      id="grid-canvas"
+      class="fixed inset-0 z-0 h-full w-full pointer-events-none"
+      aria-hidden="true"
+    ></canvas>
+
+    <!-- Subtle radial vignette so center content pops cleanly -->
+    <div
+      class="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(circle_at_top,rgba(6,182,212,0.08),transparent_55%)]"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Top Navigation -->
+    <header
+      class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/75 backdrop-blur-md"
+    >
+      <div
+        class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8"
+      >
+        <a
+          href="https://thedodos.my.id"
+          class="group flex items-center gap-2.5 text-sm font-semibold tracking-tight text-slate-100"
+        >
+          <span
+            class="flex h-8 w-8 items-center justify-center rounded-lg border border-cyan-500/40 bg-cyan-500/10 text-cyan-400 transition group-hover:bg-cyan-500/20"
+          >
+            <i data-lucide="server" class="h-4 w-4"></i>
+          </span>
+          <span class="font-mono">
+            thedodos<span class="text-cyan-400">.my.id</span>
+          </span>
+        </a>
+
+        <nav class="hidden items-center gap-6 text-xs font-medium text-slate-300 md:flex">
+          <a href="#hardware" class="transition hover:text-cyan-400">Hardware</a>
+          <a href="#telemetry" class="transition hover:text-cyan-400">Telemetry</a>
+          <a href="#services" class="transition hover:text-cyan-400">Services</a>
+          <a href="#architecture" class="transition hover:text-cyan-400">Architecture</a>
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <a
+            href="https://status.thedodos.my.id/status/homelab"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hidden items-center gap-1.5 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5 font-mono text-xs text-emerald-300 transition hover:bg-emerald-500/20 sm:inline-flex"
+          >
+            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+            Uptime Kuma
+          </a>
+          <a
+            href="https://thedodos.my.id"
+            class="inline-flex items-center gap-1.5 rounded-lg border border-slate-700/80 bg-slate-900/80 px-3 py-1.5 text-xs font-medium text-slate-200 transition hover:border-cyan-500/50 hover:text-cyan-300"
+          >
+            <i data-lucide="arrow-left" class="h-3.5 w-3.5"></i>
+            Portfolio
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 mx-auto max-w-7xl px-4 pb-20 pt-8 sm:px-6 lg:px-8">
+      <!-- HERO & LIVE STATUS -->
+      <section class="mb-12">
+        <div
+          class="glass-card relative overflow-hidden rounded-2xl p-6 sm:p-8 lg:p-10"
+        >
+          <!-- Top Status Strip -->
+          <div
+            class="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-4"
+          >
+            <div
+              class="inline-flex items-center gap-2.5 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3.5 py-1.5"
+            >
+              <span class="relative flex h-2.5 w-2.5">
+                <span
+                  class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"
+                ></span>
+                <span
+                  class="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500"
+                ></span>
+              </span>
+              <span class="font-mono text-xs font-semibold tracking-wider text-emerald-300">
+                NODE STATUS: ONLINE &amp; OPERATIONAL
+              </span>
+            </div>
+
+            <div
+              class="flex items-center gap-2 rounded-lg border border-slate-700/80 bg-slate-950/70 px-3 py-1.5 font-mono text-xs text-slate-300"
+            >
+              <i data-lucide="clock" class="h-3.5 w-3.5 text-cyan-400"></i>
+              <span class="text-slate-400">UPTIME:</span>
+              <span id="uptime-counter" class="font-semibold text-cyan-300">
+                42d 14h 28m 11s
+              </span>
+            </div>
+          </div>
+
+          <!-- Terminal Title -->
+          <div class="space-y-4">
+            <div class="flex items-center gap-2 font-mono text-xs text-cyan-400/90">
+              <span class="text-emerald-400">root@m720q-lab</span>
+              <span class="text-slate-500">:</span>
+              <span>~/infrastructure</span>
+              <span class="text-slate-500">$</span>
+              <span>./init-dashboard.sh --live</span>
+            </div>
+
+            <h1
+              class="font-mono text-2xl font-bold tracking-tight text-slate-50 sm:text-4xl lg:text-5xl"
+            >
+              <span id="typewriter-title"></span
+              ><span class="cursor-blink" aria-hidden="true"></span>
+            </h1>
+
+            <p class="max-w-3xl text-sm leading-relaxed text-slate-300 sm:text-base">
+              Infrastruktur self-hosted pribadi milik
+              <span class="font-semibold text-cyan-300">Dodo</span>
+              yang menjalankan virtualisasi, container Docker, DNS lokal, reverse
+              proxy, serta penyimpanan cloud pribadi di atas node hemat daya
+              <span class="font-mono text-emerald-300">Lenovo ThinkCentre M720q Tiny</span>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRIMARY COMPUTE NODE (BENTO GRID) -->
+      <section id="hardware" class="mb-14 scroll-mt-20">
+        <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="font-mono text-xs uppercase tracking-widest text-cyan-400">
+              01 // Hardware Foundation
+            </p>
+            <h2 class="mt-1 text-2xl font-bold tracking-tight text-slate-50 sm:text-3xl">
+              Primary Compute Node
+            </h2>
+          </div>
+          <span
+            class="inline-flex items-center gap-1.5 rounded-lg border border-slate-800 bg-slate-900/80 px-3 py-1.5 font-mono text-xs text-slate-300"
+          >
+            <i data-lucide="zap" class="h-3.5 w-3.5 text-amber-400"></i>
+            TinyMiniMicro • 35W TDP Node
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-12">
+          <!-- System Model (Span 6) -->
+          <div class="glass-card rounded-2xl p-6 transition lg:col-span-6">
+            <div class="mb-4 flex items-start justify-between gap-3">
+              <div
+                class="flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-500/30 bg-cyan-500/10 text-cyan-400"
+              >
+                <i data-lucide="cpu" class="h-5 w-5"></i>
+              </div>
+              <span
+                class="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-2.5 py-1 font-mono text-[11px] font-medium text-cyan-300"
+              >
+                NODE-01 // PRIMARY
+              </span>
+            </div>
+            <p class="font-mono text-xs uppercase tracking-wider text-slate-400">
+              System Model
+            </p>
+            <h3 class="mt-1 text-xl font-bold text-slate-50">
+              Lenovo ThinkCentre M720q Tiny
+            </h3>
+            <p class="mt-1 text-sm text-slate-300">
+              TinyMiniMicro Form Factor — 1L ultra-compact chassis untuk operasi
+              homelab 24/7 yang senyap dan efisien.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2 font-mono text-xs">
+              <span class="rounded-md bg-slate-800/90 px-2.5 py-1 text-slate-300">
+                Debian / Proxmox Host
+              </span>
+              <span class="rounded-md bg-slate-800/90 px-2.5 py-1 text-slate-300">
+                1Gbps Ethernet
+              </span>
+              <span class="rounded-md bg-slate-800/90 px-2.5 py-1 text-emerald-300">
+                24/7 Always-On
+              </span>
+            </div>
+          </div>
+
+          <!-- Processor (Span 6) -->
+          <div class="glass-card rounded-2xl p-6 transition lg:col-span-6">
+            <div class="mb-4 flex items-start justify-between gap-3">
+              <div
+                class="flex h-11 w-11 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
+              >
+                <i data-lucide="microchip" class="h-5 w-5"></i>
+              </div>
+              <span
+                class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 font-mono text-[11px] font-medium text-emerald-300"
+              >
+                35W TDP
+              </span>
+            </div>
+            <p class="font-mono text-xs uppercase tracking-wider text-slate-400">
+              Processor
+            </p>
+            <h3 class="mt-1 text-xl font-bold text-slate-50">
+              Intel Core i5-9500T
+            </h3>
+            <p class="mt-1 text-sm text-slate-300">
+              6 Cores / 6 Threads • Base 2.20 GHz • Max Turbo 3.70 GHz
+            </p>
+            <div class="mt-4 grid grid-cols-3 gap-2 font-mono text-xs">
+              <div class="rounded-lg border border-slate-800 bg-slate-950/60 p-2.5">
+                <span class="block text-[10px] text-slate-400">CORES / THREADS</span>
+                <span class="font-semibold text-slate-100">6C / 6T</span>
+              </div>
+              <div class="rounded-lg border border-slate-800 bg-slate-950/60 p-2.5">
+                <span class="block text-[10px] text-slate-400">CLOCK SPEED</span>
+                <span class="font-semibold text-cyan-300">2.20–3.70 GHz</span>
+              </div>
+              <div class="rounded-lg border border-slate-800 bg-slate-950/60 p-2.5">
+                <span class="block text-[10px] text-slate-400">THERMAL</span>
+                <span class="font-semibold text-emerald-300">35W TDP</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Memory RAM (Span 4) -->
+          <div class="glass-card rounded-2xl p-6 transition lg:col-span-4">
+            <div class="mb-3 flex items-center justify-between gap-2">
+              <div
+                class="flex h-10 w-10 items-center justify-center rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-400"
+              >
+                <i data-lucide="memory-stick" class="h-5 w-5"></i>
+              </div>
+              <span
+                class="inline-flex animate-pulse items-center gap-1 rounded-full border border-amber-400/40 bg-amber-500/15 px-2.5 py-1 font-mono text-[11px] font-semibold text-amber-300"
+              >
+                Upgrading to 24GB ⏳
+              </span>
+            </div>
+            <p class="font-mono text-xs uppercase tracking-wider text-slate-400">
+              Memory (RAM)
+            </p>
+            <h3 class="mt-1 text-lg font-bold text-slate-50">8GB DDR4 SO-DIMM</h3>
+            <p class="mt-1 text-xs text-slate-400">
+              Slot 1: 8GB Terpasang • Slot 2: Siap +16GB (Target 24GB)
+            </p>
+
+            <!-- Capacity Progress Bar -->
+            <div class="mt-4">
+              <div class="mb-1.5 flex justify-between font-mono text-xs">
+                <span class="text-slate-300">Kapasitas Saat Ini</span>
+                <span class="text-amber-300">8GB / 24GB (33%)</span>
+              </div>
+              <div class="h-2.5 w-full overflow-hidden rounded-full bg-slate-800">
+                <div
+                  class="h-full rounded-full bg-gradient-to-r from-cyan-500 to-amber-400"
+                  style="width: 33.3%"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Primary Storage (Span 4) -->
+          <div class="glass-card rounded-2xl p-6 transition lg:col-span-4">
+            <div class="mb-3 flex items-center justify-between gap-2">
+              <div
+                class="flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-500/30 bg-cyan-500/10 text-cyan-400"
+              >
+                <i data-lucide="hard-drive" class="h-5 w-5"></i>
+              </div>
+              <span
+                class="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-2.5 py-1 font-mono text-[11px] text-cyan-300"
+              >
+                NVMe PCIe
+              </span>
+            </div>
+            <p class="font-mono text-xs uppercase tracking-wider text-slate-400">
+              Primary Storage
+            </p>
+            <h3 class="mt-1 text-lg font-bold text-slate-50">128GB NVMe M.2 SSD</h3>
+            <p class="mt-1 text-xs leading-relaxed text-slate-300">
+              OS, Bootloader, Docker Engine &amp; Fast VMs / Containers dengan IOPS
+              tinggi.
+            </p>
+          </div>
+
+          <!-- Secondary Storage (Span 4) -->
+          <div class="glass-card rounded-2xl p-6 transition lg:col-span-4">
+            <div class="mb-3 flex items-center justify-between gap-2">
+              <div
+                class="flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
+              >
+                <i data-lucide="database" class="h-5 w-5"></i>
+              </div>
+              <span
+                class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 font-mono text-[11px] text-emerald-300"
+              >
+                SATA 2.5"
+              </span>
+            </div>
+            <p class="font-mono text-xs uppercase tracking-wider text-slate-400">
+              Secondary Storage
+            </p>
+            <h3 class="mt-1 text-lg font-bold text-slate-50">1TB 2.5" HDD</h3>
+            <p class="mt-1 text-xs leading-relaxed text-slate-300">
+              Bulk Data, Nextcloud Storage, Media Library &amp; Automated Backups.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIVE TELEMETRY & ACTIVE SERVICES -->
+      <section id="telemetry" class="mb-14 scroll-mt-20">
+        <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="font-mono text-xs uppercase tracking-widest text-emerald-400">
+              02 // Real-Time Observability
+            </p>
+            <h2 class="mt-1 text-2xl font-bold tracking-tight text-slate-50 sm:text-3xl">
+              Live Telemetry &amp; Resource Monitor
+            </h2>
+          </div>
+
+          <div class="flex items-center gap-2 font-mono text-xs">
+            <span
+              id="telemetry-mode-badge"
+              class="inline-flex items-center gap-1.5 rounded-lg border border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 text-cyan-300"
+            >
+              <span class="h-2 w-2 animate-pulse rounded-full bg-cyan-400"></span>
+              SIMULATED TELEMETRY (2s)
+            </span>
+            <span
+              id="last-sync-time"
+              class="rounded-lg border border-slate-800 bg-slate-900/80 px-2.5 py-1.5 text-slate-400"
+            >
+              --:--:--
+            </span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-12">
+          <!-- Telemetry Gauges & Bars (Left 7 cols) -->
+          <div class="glass-card rounded-2xl p-6 lg:col-span-7">
+            <div class="mb-5 flex items-center justify-between">
+              <h3 class="flex items-center gap-2 text-base font-semibold text-slate-100">
+                <i data-lucide="activity" class="h-4 w-4 text-cyan-400"></i>
+                Node Resource Metrics (i5-9500T)
+              </h3>
+              <span class="font-mono text-xs text-slate-400">
+                Refresh: <span class="text-emerald-400">2000ms</span>
+              </span>
+            </div>
+
+            <div class="space-y-5">
+              <!-- CPU Load -->
+              <div>
+                <div class="mb-1.5 flex items-center justify-between text-sm">
+                  <span class="flex items-center gap-2 font-medium text-slate-200">
+                    <i data-lucide="cpu" class="h-4 w-4 text-cyan-400"></i>
+                    CPU Load (6 Cores)
+                  </span>
+                  <span id="cpu-load-val" class="font-mono font-semibold text-cyan-300">
+                    24.5%
+                  </span>
+                </div>
+                <div class="h-3 w-full overflow-hidden rounded-full bg-slate-800/90">
+                  <div
+                    id="cpu-load-bar"
+                    class="h-full rounded-full bg-gradient-to-r from-cyan-500 to-emerald-400 transition-all duration-700 ease-out"
+                    style="width: 24.5%"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- CPU Temp -->
+              <div>
+                <div class="mb-1.5 flex items-center justify-between text-sm">
+                  <span class="flex items-center gap-2 font-medium text-slate-200">
+                    <i data-lucide="thermometer" class="h-4 w-4 text-emerald-400"></i>
+                    CPU Package Temperature
+                  </span>
+                  <span id="cpu-temp-val" class="font-mono font-semibold text-emerald-300">
+                    46°C
+                  </span>
+                </div>
+                <div class="h-3 w-full overflow-hidden rounded-full bg-slate-800/90">
+                  <div
+                    id="cpu-temp-bar"
+                    class="h-full rounded-full bg-gradient-to-r from-emerald-500 to-cyan-400 transition-all duration-700 ease-out"
+                    style="width: 46%"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- RAM Usage (8GB active, 24GB projected) -->
+              <div>
+                <div class="mb-1.5 flex flex-wrap items-center justify-between gap-2 text-sm">
+                  <span class="flex items-center gap-2 font-medium text-slate-200">
+                    <i data-lucide="memory-stick" class="h-4 w-4 text-amber-400"></i>
+                    RAM Usage
+                    <span class="rounded bg-amber-500/15 px-1.5 py-0.5 font-mono text-[10px] text-amber-300">
+                      Proyeksi 24GB
+                    </span>
+                  </span>
+                  <span id="ram-usage-val" class="font-mono font-semibold text-amber-300">
+                    4.82 / 8.00 GB (60.3%)
+                  </span>
+                </div>
+                <!-- Current 8GB bar -->
+                <div class="h-3 w-full overflow-hidden rounded-full bg-slate-800/90">
+                  <div
+                    id="ram-usage-bar"
+                    class="h-full rounded-full bg-gradient-to-r from-amber-500 to-cyan-400 transition-all duration-700 ease-out"
+                    style="width: 60.3%"
+                  ></div>
+                </div>
+                <p id="ram-projected-note" class="mt-1 font-mono text-[11px] text-slate-400">
+                  Setelah upgrade ke 24GB: utilisasi hanya ~20.1% (headroom ekstra +16GB)
+                </p>
+              </div>
+
+              <!-- Storage Bars -->
+              <div class="grid grid-cols-1 gap-4 pt-2 sm:grid-cols-2">
+                <!-- NVMe 128GB -->
+                <div class="rounded-xl border border-slate-800/80 bg-slate-950/60 p-3.5">
+                  <div class="mb-1.5 flex items-center justify-between font-mono text-xs">
+                    <span class="text-slate-300">128GB NVMe SSD</span>
+                    <span id="nvme-val" class="font-semibold text-cyan-300">
+                      48.4 / 128 GB
+                    </span>
+                  </div>
+                  <div class="h-2.5 w-full overflow-hidden rounded-full bg-slate-800">
+                    <div
+                      id="nvme-bar"
+                      class="h-full rounded-full bg-cyan-400 transition-all duration-700"
+                      style="width: 37.8%"
+                    ></div>
+                  </div>
+                  <span class="mt-1.5 block font-mono text-[11px] text-slate-400">
+                    OS, Docker &amp; Fast VMs
+                  </span>
+                </div>
+
+                <!-- HDD 1TB -->
+                <div class="rounded-xl border border-slate-800/80 bg-slate-950/60 p-3.5">
+                  <div class="mb-1.5 flex items-center justify-between font-mono text-xs">
+                    <span class="text-slate-300">1TB 2.5" HDD</span>
+                    <span id="hdd-val" class="font-semibold text-emerald-300">
+                      342 / 1000 GB
+                    </span>
+                  </div>
+                  <div class="h-2.5 w-full overflow-hidden rounded-full bg-slate-800">
+                    <div
+                      id="hdd-bar"
+                      class="h-full rounded-full bg-emerald-400 transition-all duration-700"
+                      style="width: 34.2%"
+                    ></div>
+                  </div>
+                  <span class="mt-1.5 block font-mono text-[11px] text-slate-400">
+                    Bulk Data, Media &amp; Backups
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Services / Containers (Right 5 cols) -->
+          <div id="services" class="glass-card rounded-2xl p-6 lg:col-span-5 scroll-mt-20">
+            <div class="mb-4 flex items-center justify-between">
+              <h3 class="flex items-center gap-2 text-base font-semibold text-slate-100">
+                <i data-lucide="boxes" class="h-4 w-4 text-emerald-400"></i>
+                Active Services / Containers
+              </h3>
+              <span
+                class="rounded-full bg-emerald-500/15 px-2.5 py-0.5 font-mono text-xs font-medium text-emerald-300"
+              >
+                6 / 6 UP
+              </span>
+            </div>
+
+            <div id="services-list" class="space-y-2.5">
+              <!-- Populated & updated dynamically by fetchLabMetrics() -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NETWORK & ARCHITECTURE FLOW -->
+      <section id="architecture" class="mb-12 scroll-mt-20">
+        <div class="mb-6">
+          <p class="font-mono text-xs uppercase tracking-widest text-cyan-400">
+            03 // Topology &amp; Traffic Flow
+          </p>
+          <h2 class="mt-1 text-2xl font-bold tracking-tight text-slate-50 sm:text-3xl">
+            Arsitektur &amp; Aliran Jaringan
+          </h2>
+          <p class="mt-1 text-sm text-slate-300">
+            Zero-trust ingress tanpa port-forwarding terbuka di router lokal,
+            diteruskan ke reverse proxy dan workload terisolasi di Lenovo M720q.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 sm:p-8">
+          <div class="flex flex-col items-stretch justify-between gap-2 lg:flex-row lg:items-center">
+            <!-- Node 1: Public Internet -->
+            <div
+              class="flex flex-1 flex-col items-center rounded-xl border border-slate-700/80 bg-slate-950/70 p-4 text-center transition hover:border-cyan-500/50"
+            >
+              <div
+                class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-400"
+              >
+                <i data-lucide="globe" class="h-5 w-5"></i>
+              </div>
+              <h4 class="text-sm font-semibold text-slate-100">Public Internet / User</h4>
+              <span class="mt-1 font-mono text-[11px] text-slate-400">
+                HTTPS (443) • TLS 1.3
+              </span>
+            </div>
+
+            <!-- Connector 1 -->
+            <div class="flex items-center justify-center py-1 lg:px-1 lg:py-0">
+              <div class="flow-line-v h-7 lg:hidden"></div>
+              <div class="flow-line-h hidden w-8 xl:w-12 lg:block"></div>
+            </div>
+
+            <!-- Node 2: Cloudflare -->
+            <div
+              class="flex flex-1 flex-col items-center rounded-xl border border-amber-500/30 bg-slate-950/70 p-4 text-center transition hover:border-amber-400/60"
+            >
+              <div
+                class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500/10 text-amber-400"
+              >
+                <i data-lucide="shield-check" class="h-5 w-5"></i>
+              </div>
+              <h4 class="text-sm font-semibold text-slate-100">
+                Cloudflare DNS &amp; Tunnel / WAF
+              </h4>
+              <span class="mt-1 font-mono text-[11px] text-amber-300/90">
+                Zero-Trust Argo Tunnel
+              </span>
+            </div>
+
+            <!-- Connector 2 -->
+            <div class="flex items-center justify-center py-1 lg:px-1 lg:py-0">
+              <div class="flow-line-v h-7 lg:hidden"></div>
+              <div class="flow-line-h hidden w-8 xl:w-12 lg:block"></div>
+            </div>
+
+            <!-- Node 3: Reverse Proxy -->
+            <div
+              class="flex flex-1 flex-col items-center rounded-xl border border-emerald-500/30 bg-slate-950/70 p-4 text-center transition hover:border-emerald-400/60"
+            >
+              <div
+                class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400"
+              >
+                <i data-lucide="network" class="h-5 w-5"></i>
+              </div>
+              <h4 class="text-sm font-semibold text-slate-100">Reverse Proxy</h4>
+              <span class="mt-1 font-mono text-[11px] text-emerald-300/90">
+                Nginx Proxy Manager
+              </span>
+            </div>
+
+            <!-- Connector 3 -->
+            <div class="flex items-center justify-center py-1 lg:px-1 lg:py-0">
+              <div class="flow-line-v h-7 lg:hidden"></div>
+              <div class="flow-line-h hidden w-8 xl:w-12 lg:block"></div>
+            </div>
+
+            <!-- Node 4: Lenovo M720q Host -->
+            <div
+              class="flex flex-1 flex-col items-center rounded-xl border border-cyan-500/40 bg-slate-950/80 p-4 text-center transition hover:border-cyan-400"
+            >
+              <div
+                class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-500/15 text-cyan-300"
+              >
+                <i data-lucide="server" class="h-5 w-5"></i>
+              </div>
+              <h4 class="text-sm font-semibold text-slate-100">Lenovo M720q Host</h4>
+              <span class="mt-1 font-mono text-[11px] text-cyan-300">
+                i5-9500T • 8GB➔24GB RAM
+              </span>
+            </div>
+
+            <!-- Connector 4 -->
+            <div class="flex items-center justify-center py-1 lg:px-1 lg:py-0">
+              <div class="flow-line-v h-7 lg:hidden"></div>
+              <div class="flow-line-h hidden w-8 xl:w-12 lg:block"></div>
+            </div>
+
+            <!-- Node 5: Workloads & Storage -->
+            <div
+              class="flex flex-1 flex-col items-center rounded-xl border border-slate-700/80 bg-slate-950/70 p-4 text-center transition hover:border-emerald-500/50"
+            >
+              <div
+                class="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400"
+              >
+                <i data-lucide="layers" class="h-5 w-5"></i>
+              </div>
+              <h4 class="text-sm font-semibold text-slate-100">
+                VMs &amp; Docker Containers
+              </h4>
+              <span class="mt-1 font-mono text-[11px] text-slate-300">
+                128GB NVMe + 1TB HDD
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer
+        class="flex flex-col items-center justify-between gap-3 border-t border-slate-800/80 pt-6 text-xs text-slate-400 sm:flex-row"
+      >
+        <p class="font-mono">
+          © 2026 <span class="text-slate-200">thedodos.my.id</span> • Fahlevi Akbar
+        </p>
+        <p class="font-mono text-slate-500">
+          Powered by M720q • Docker • Cloudflare Tunnel
+        </p>
+      </footer>
+    </main>
+
+    <!-- =================================================================== -->
+    <!-- JAVASCRIPT: Interactive Grid Canvas + Typewriter + Telemetry Engine -->
+    <!-- =================================================================== -->
     <script>
-      const menuToggle = document.querySelector(".menu-toggle");
+      // 1. Initialize Lucide Icons
+      lucide.createIcons();
 
-      const navLinks = document.querySelector(".nav-links");
+      // 2. Interactive Square Grid Canvas (60fps, desktop mouse + mobile touch)
+      (() => {
+        const canvas = document.getElementById("grid-canvas");
+        const ctx = canvas.getContext("2d");
 
-      const overlay = document.querySelector(".menu-overlay");
+        let width = 0;
+        let height = 0;
+        let dpr = 1;
+        const cellSize = 44; // px per square
+        let cols = 0;
+        let rows = 0;
+        let cells = [];
 
-      const links = document.querySelectorAll(".nav-links a");
+        const pointer = {
+          x: -9999,
+          y: -9999,
+          active: false,
+          radius: 155,
+        };
 
-      function openMenu() {
-        navLinks.classList.add("active");
+        function initGrid() {
+          dpr = Math.min(window.devicePixelRatio || 1, 2);
+          width = window.innerWidth;
+          height = window.innerHeight;
 
-        overlay.classList.add("active");
+          canvas.width = width * dpr;
+          canvas.height = height * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-        menuToggle.classList.add("active");
-      }
-
-      function closeMenu() {
-        navLinks.classList.remove("active");
-
-        overlay.classList.remove("active");
-
-        menuToggle.classList.remove("active");
-      }
-
-      menuToggle.addEventListener("click", () => {
-        if (navLinks.classList.contains("active")) {
-          closeMenu();
-        } else {
-          openMenu();
+          cols = Math.ceil(width / cellSize) + 1;
+          rows = Math.ceil(height / cellSize) + 1;
+          cells = new Float32Array(cols * rows);
         }
-      });
 
-      // klik luar menu
+        function triggerRipple(px, py) {
+          pointer.x = px;
+          pointer.y = py;
+          pointer.active = true;
 
-      overlay.addEventListener("click", () => {
-        closeMenu();
-      });
+          const startCol = Math.max(0, Math.floor((px - pointer.radius) / cellSize));
+          const endCol = Math.min(cols - 1, Math.ceil((px + pointer.radius) / cellSize));
+          const startRow = Math.max(0, Math.floor((py - pointer.radius) / cellSize));
+          const endRow = Math.min(rows - 1, Math.ceil((py + pointer.radius) / cellSize));
 
-      // klik menu item
+          for (let r = startRow; r <= endRow; r++) {
+            for (let c = startCol; c <= endCol; c++) {
+              const cx = c * cellSize + cellSize / 2;
+              const cy = r * cellSize + cellSize / 2;
+              const dist = Math.hypot(cx - px, cy - py);
+              if (dist < pointer.radius) {
+                const intensity = 1 - dist / pointer.radius;
+                const idx = r * cols + c;
+                if (intensity > cells[idx]) {
+                  cells[idx] = intensity;
+                }
+              }
+            }
+          }
+        }
 
-      links.forEach((link) => {
-        link.addEventListener("click", () => {
-          closeMenu();
+        // Desktop mouse events
+        window.addEventListener(
+          "mousemove",
+          (e) => {
+            triggerRipple(e.clientX, e.clientY);
+          },
+          { passive: true }
+        );
+        window.addEventListener("mouseleave", () => {
+          pointer.active = false;
         });
-      });
 
-      // scroll otomatis tutup
+        // Mobile touch events
+        window.addEventListener(
+          "touchstart",
+          (e) => {
+            if (e.touches.length > 0) {
+              triggerRipple(e.touches[0].clientX, e.touches[0].clientY);
+            }
+          },
+          { passive: true }
+        );
+        window.addEventListener(
+          "touchmove",
+          (e) => {
+            if (e.touches.length > 0) {
+              triggerRipple(e.touches[0].clientX, e.touches[0].clientY);
+            }
+          },
+          { passive: true }
+        );
 
-      window.addEventListener("scroll", () => {
-        closeMenu();
-      });
+        window.addEventListener("resize", initGrid);
+        initGrid();
 
-      // tombol ESC
+        function render() {
+          ctx.clearRect(0, 0, width, height);
 
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          closeMenu();
+          // Subtle ambient sparkle so grid feels alive
+          if (Math.random() < 0.08 && cells.length > 0) {
+            const randIdx = Math.floor(Math.random() * cells.length);
+            cells[randIdx] = Math.max(cells[randIdx], 0.35);
+          }
+
+          for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+              const idx = r * cols + c;
+              const x = c * cellSize;
+              const y = r * cellSize;
+              const val = cells[idx];
+
+              if (val > 0.01) {
+                // Smooth fade-out
+                cells[idx] *= 0.93;
+
+                // Slight scale expansion on active cells
+                const expand = val * 3.5;
+                const drawX = x - expand / 2;
+                const drawY = y - expand / 2;
+                const drawSize = cellSize + expand;
+
+                // Blend cyan (#06b6d4) and emerald (#10b981)
+                const isEmerald = (r + c) % 2 === 0;
+                const rgb = isEmerald ? "16, 185, 129" : "6, 182, 212";
+
+                ctx.fillStyle = `rgba(${rgb}, ${(val * 0.16).toFixed(3)})`;
+                ctx.fillRect(drawX, drawY, drawSize, drawSize);
+
+                ctx.strokeStyle = `rgba(${rgb}, ${(0.12 + val * 0.65).toFixed(3)})`;
+                ctx.lineWidth = 1;
+                ctx.strokeRect(drawX + 0.5, drawY + 0.5, drawSize - 1, drawSize - 1);
+              } else {
+                cells[idx] = 0;
+                // Base subtle grid lines
+                ctx.strokeStyle = "rgba(30, 41, 59, 0.38)";
+                ctx.lineWidth = 1;
+                ctx.strokeRect(x + 0.5, y + 0.5, cellSize, cellSize);
+              }
+            }
+          }
+
+          requestAnimationFrame(render);
         }
-      });
+
+        requestAnimationFrame(render);
+      })();
+
+      // 3. Typewriter Effect for Header Title
+      (() => {
+        const target = document.getElementById("typewriter-title");
+        const fullText = "thedodos.my.id // Homelab Infrastructure";
+        let i = 0;
+
+        function typeNext() {
+          if (i <= fullText.length) {
+            target.textContent = fullText.slice(0, i);
+            i++;
+            setTimeout(typeNext, 42);
+          }
+        }
+        typeNext();
+      })();
+
+      // 4. Live Uptime Counter
+      (() => {
+        const uptimeEl = document.getElementById("uptime-counter");
+        // Initial simulated uptime: 42d 14h 28m 11s
+        let totalSeconds = 42 * 86400 + 14 * 3600 + 28 * 60 + 11;
+
+        setInterval(() => {
+          totalSeconds++;
+          const d = Math.floor(totalSeconds / 86400);
+          const h = Math.floor((totalSeconds % 86400) / 3600);
+          const m = Math.floor((totalSeconds % 3600) / 60);
+          const s = totalSeconds % 60;
+
+          const pad = (n) => String(n).padStart(2, "0");
+          uptimeEl.textContent = `${d}d ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
+        }, 1000);
+      })();
+
+      // 5. Modular Telemetry & Services Engine
+      const telemetryState = {
+        cpuLoad: 24.5,
+        cpuTemp: 46,
+        ramUsedGB: 4.82,
+        ramTotalGB: 8.0,
+        ramProjectedGB: 24.0,
+        nvmeUsedGB: 48.4,
+        nvmeTotalGB: 128,
+        hddUsedGB: 342,
+        hddTotalGB: 1000,
+        services: [
+          {
+            name: "Reverse Proxy / Cloudflare Tunnel",
+            sub: "cloudflared + Nginx Proxy Manager",
+            latency: 14,
+            status: "Online",
+          },
+          {
+            name: "Virtualization Host",
+            sub: "Proxmox / Docker Engine",
+            latency: 2,
+            status: "Online",
+          },
+          {
+            name: "Monitoring Stack",
+            sub: "Uptime Kuma (status.thedodos.my.id)",
+            latency: 9,
+            status: "Online",
+          },
+          {
+            name: "Local DNS",
+            sub: "AdGuard Home • DNS Filtering",
+            latency: 3,
+            status: "Online",
+          },
+          {
+            name: "Storage Server",
+            sub: "Nextcloud + Samba / NFS (1TB HDD)",
+            latency: 6,
+            status: "Online",
+          },
+          {
+            name: "Mesh VPN",
+            sub: "Tailscale WireGuard Gateway",
+            latency: 18,
+            status: "Online",
+          },
+        ],
+      };
+
+      function clamp(val, min, max) {
+        return Math.min(max, Math.max(min, val));
+      }
+
+      /**
+       * fetchLabMetrics()
+       * -----------------------------------------------------------------------
+       * Secara default menjalankan simulasi fluktuasi data realistis setiap 2 detik.
+       * Untuk menghubungkan ke API asli (Glances, Proxmox, atau Uptime Kuma),
+       * ganti blok simulasi di bawah dengan fetch() ke endpoint JSON Anda:
+       *
+       * Contoh Glances API:
+       *   const res = await fetch("https://lab-api.thedodos.my.id/api/4/all");
+       *   const data = await res.json();
+       *   // data.cpu.total, data.mem.used, data.sensors[0].value, data.fs
+       *
+       * Contoh Proxmox VE API (via reverse proxy):
+       *   const res = await fetch("https://pve.thedodos.my.id/api2/json/nodes/m720q/status", {
+       *     headers: { Authorization: "PVEAPIToken=user@pam!token=SECRET" }
+       *   });
+       *
+       * Contoh Uptime Kuma Status Page API:
+       *   const res = await fetch("https://status.thedodos.my.id/api/status-page/heartbeat/homelab");
+       * -----------------------------------------------------------------------
+       */
+      async function fetchLabMetrics() {
+        // --- [SIMULATION MODE START] ---
+        telemetryState.cpuLoad = clamp(
+          telemetryState.cpuLoad + (Math.random() - 0.48) * 9,
+          12,
+          78
+        );
+        telemetryState.cpuTemp = Math.round(
+          clamp(40 + telemetryState.cpuLoad * 0.34 + (Math.random() - 0.5) * 3, 38, 72)
+        );
+        telemetryState.ramUsedGB = clamp(
+          telemetryState.ramUsedGB + (Math.random() - 0.5) * 0.28,
+          3.9,
+          6.8
+        );
+        telemetryState.nvmeUsedGB = clamp(
+          telemetryState.nvmeUsedGB + (Math.random() - 0.5) * 0.05,
+          48.0,
+          50.0
+        );
+        telemetryState.hddUsedGB = clamp(
+          telemetryState.hddUsedGB + (Math.random() - 0.5) * 0.2,
+          341,
+          345
+        );
+
+        telemetryState.services.forEach((svc) => {
+          svc.latency = Math.round(
+            clamp(svc.latency + (Math.random() - 0.5) * 4, 1, 35)
+          );
+        });
+        // --- [SIMULATION MODE END] ---
+
+        renderTelemetryUI(telemetryState);
+      }
+
+      function renderTelemetryUI(data) {
+        // CPU Load
+        const cpuPct = data.cpuLoad.toFixed(1);
+        document.getElementById("cpu-load-val").textContent = `${cpuPct}%`;
+        document.getElementById("cpu-load-bar").style.width = `${cpuPct}%`;
+
+        // CPU Temp
+        const tempEl = document.getElementById("cpu-temp-val");
+        const tempBar = document.getElementById("cpu-temp-bar");
+        tempEl.textContent = `${data.cpuTemp}°C`;
+        tempBar.style.width = `${Math.min(100, data.cpuTemp)}%`;
+
+        if (data.cpuTemp >= 65) {
+          tempEl.className = "font-mono font-semibold text-rose-400";
+          tempBar.className =
+            "h-full rounded-full bg-gradient-to-r from-amber-500 to-rose-500 transition-all duration-700 ease-out";
+        } else if (data.cpuTemp >= 55) {
+          tempEl.className = "font-mono font-semibold text-amber-300";
+          tempBar.className =
+            "h-full rounded-full bg-gradient-to-r from-emerald-500 to-amber-400 transition-all duration-700 ease-out";
+        } else {
+          tempEl.className = "font-mono font-semibold text-emerald-300";
+          tempBar.className =
+            "h-full rounded-full bg-gradient-to-r from-emerald-500 to-cyan-400 transition-all duration-700 ease-out";
+        }
+
+        // RAM Usage (8GB active + 24GB projection)
+        const ramPct = ((data.ramUsedGB / data.ramTotalGB) * 100).toFixed(1);
+        const projectedPct = ((data.ramUsedGB / data.ramProjectedGB) * 100).toFixed(1);
+        document.getElementById("ram-usage-val").textContent =
+          `${data.ramUsedGB.toFixed(2)} / ${data.ramTotalGB.toFixed(2)} GB (${ramPct}%)`;
+        document.getElementById("ram-usage-bar").style.width = `${ramPct}%`;
+        document.getElementById("ram-projected-note").textContent =
+          `Setelah upgrade ke 24GB: utilisasi hanya ~${projectedPct}% (headroom ekstra +16GB)`;
+
+        // Storage NVMe & HDD
+        const nvmePct = ((data.nvmeUsedGB / data.nvmeTotalGB) * 100).toFixed(1);
+        document.getElementById("nvme-val").textContent =
+          `${data.nvmeUsedGB.toFixed(1)} / ${data.nvmeTotalGB} GB`;
+        document.getElementById("nvme-bar").style.width = `${nvmePct}%`;
+
+        const hddPct = ((data.hddUsedGB / data.hddTotalGB) * 100).toFixed(1);
+        document.getElementById("hdd-val").textContent =
+          `${Math.round(data.hddUsedGB)} / ${data.hddTotalGB} GB`;
+        document.getElementById("hdd-bar").style.width = `${hddPct}%`;
+
+        // Services List
+        const listEl = document.getElementById("services-list");
+        listEl.innerHTML = data.services
+          .map(
+            (svc) => `
+            <div class="flex items-center justify-between gap-3 rounded-xl border border-slate-800/80 bg-slate-950/60 px-3.5 py-2.5 transition hover:border-cyan-500/40">
+              <div class="min-w-0">
+                <div class="flex items-center gap-2">
+                  <span class="h-2 w-2 shrink-0 rounded-full bg-emerald-400 shadow-[0_0_8px_#10b981]"></span>
+                  <p class="truncate text-sm font-medium text-slate-100">${svc.name}</p>
+                </div>
+                <p class="truncate pl-4 font-mono text-[11px] text-slate-400">${svc.sub}</p>
+              </div>
+              <div class="shrink-0 text-right font-mono">
+                <span class="block text-xs font-semibold text-emerald-300">${svc.status}</span>
+                <span class="block text-[11px] text-cyan-400">${svc.latency} ms</span>
+              </div>
+            </div>
+          `
+          )
+          .join("");
+
+        // Sync timestamp
+        const now = new Date();
+        document.getElementById("last-sync-time").textContent =
+          now.toLocaleTimeString("id-ID", { hour12: false });
+      }
+
+      // Initial fetch & 2-second interval
+      fetchLabMetrics();
+      setInterval(fetchLabMetrics, 2000);
     </script>
   </body>
 </html>
